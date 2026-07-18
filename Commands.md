@@ -43,3 +43,10 @@ or we can also use environment variables like TF_VAR_filename
 12) terraform apply -------------
 13) terraform validate
 14) terraform show
+15) terraform providers, terraform providers mirror
+16) terraform format/fmt
+17) terraform apply -refresh-only
+18) terraform
+19) terraform output
+20) terraform graph
+21) terraform state show local_file.data
