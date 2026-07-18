@@ -35,3 +35,11 @@ or we can also use environment variables like TF_VAR_filename
 9) Purpose of state :
 - used while deleting resorces to know which one to delete first
 - used in improving performance when many resources are there
+- the cached file, terraform will refer to the same file everytime and wont refresh everytime. use --refresh=false
+
+10) terraform init => state file does not change
+11) terraform plan  -------------
+                                | => state file changes  
+12) terraform apply -------------
+13) terraform validate
+14) terraform show
