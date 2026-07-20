@@ -41,12 +41,40 @@ or we can also use environment variables like TF_VAR_filename
 11) terraform plan  -------------
                                 | => state file changes  
 12) terraform apply -------------
-13) terraform validate
+13) terraform validate 
 14) terraform show
 15) terraform providers, terraform providers mirror
-16) terraform format/fmt
-17) terraform apply -refresh-only
-18) terraform
-19) terraform output
-20) terraform graph
-21) terraform state show local_file.data
+16) Terrform generates immutable resources
+17) 
+output "os-version" {
+  value = data.local_file.content
+}
+data "local_file" "content" {
+  filename = "/etc/os-release"
+}
+data source which does not create, update or delete the resource, but it is just used to read the file created by other resource
+18)
+18) terraform format/fmt
+19) terraform apply -refresh-only
+20) terraform
+21) terraform output
+22) terraform graph
+23) terraform state show local_file.data
+24) lifecycle rules: create_before_destroy, prevent_destroy, ignore_changes
+25) 
+variables.tf
+variable "users" {
+    type = list(string)
+    default = [ "/root/user10", "/root/user11", "/root/user12", "/root/user10"]
+}
+variable "content" {
+    default = "password: S3cr3tP@ssw0rd"
+    
+}
+
+main.tf
+resource "local_file" "example"{
+    for_each = toset(var.users)
+    filename = each.value
+    content = var.content
+}
